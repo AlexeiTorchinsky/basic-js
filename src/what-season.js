@@ -12,28 +12,22 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  
-  // try {
-  //   Object.getOwnPropertyNames(date).length == Object.getOwnPropertyNames(Date).length;
-  //   date instanceof Date;
-  // } catch (error) {
-  //   return error.message('Invalid date!');
-  // }
+ 
  
   if (!date) {
     return 'Unable to determine the time of year!';
   }
   
-  if (!(date instanceof Date)) {
-    throw new TypeError('Invalid date!');
-  }
+  // if (!(date instanceof Date)) {
+  //   throw new TypeError('Invalid date!');
+  // }
   try {
-    date.getYear()
+    date.getTime();
     } 
   catch {
-    throw new Error('Invalid date!')
+    throw new TypeError('Invalid date!');
   }
- 
+
   let season = '';
   if (date.getMonth() >= 2 && date.getMonth() < 5) {
     season = 'spring';
